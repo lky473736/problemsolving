@@ -1,14 +1,18 @@
 # fibonacci sequence
 
-i = 0
-N = int(input("수를 입력하시오 : "))
-a = 1 
-sequence = []
+fibonacci = [1, 1] # 첫째 항과 둘째 항은 이미 들어가 있음
 
-print (a)
+n = int(input("n? : ")) # 어디까지 계산할 건지 물음
 
-while i < N - 1 : # n개의 피보나치 수열이 출력되게끔 n번 반복
-    print (a)
-    sequence.append (a)
-    a = sequence[i-1] + sequence[i]
-    i = i + 1
+for i in range (n - 2) : # 이미 첫째 항과 둘째 항이 있기 때문에 n - 2번 반복
+    if i == 0 :
+        pass
+    
+    elif i == 1 :
+        pass
+    
+    k = fibonacci[i] + fibonacci[i + 1]
+    fibonacci.append (k)
+    
+print (fibonacci)
+print ("합은 : ", sum(fibonacci))
