@@ -25,4 +25,6 @@ turtle.forward (k * unitvector_x)
 turtle.left (90)
 turtle.forward (j * unitvector_y)
 
+print (k + j) 
+
 turtle.mainloop()
