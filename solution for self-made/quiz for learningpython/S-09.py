@@ -1,6 +1,6 @@
 import random
 
-number0 = random.randint(1,1000) # randint 함수를 사용 (컴퓨터가 숫자를 고르게 함)
+number0 = random.randint(1,100) # randint 함수를 사용 (컴퓨터가 숫자를 고르게 함)
 
 print("컴퓨터는 1부터 100까지 숫자 중 어느 하나를 택하였습니다.")
 
