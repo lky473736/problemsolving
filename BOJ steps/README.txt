@@ -1,5 +1,5 @@
 https://www.acmicpc.net/step
 
-목표 : 내년 2월 안까지 모든 단계 다 풀기 
+1 ~ 9단계까지 작성 (그 이외에는 baekjoonhub가 자동화해서 올려줌) 
 
 https://www.acmicpc.net/user/lky473736
