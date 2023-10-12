@@ -13,12 +13,16 @@ int main(void)
    printf("자연수를 입력하시오 : ");
    scanf("%d", &a); 
 
-   if (a % 2 != 0) { 
-      printf("홀수입니다."); 
-   }
-   else {
-      printf("홀수가 아닙니다."); 
-   }
-
+   for (int i = 1; i <= a; i++)
+  {
+     if (i % 2 == 0)
+     {
+       printf ("짝수\n");
+     }
+     else
+     {
+       printf ("홀수\n");
+     }
+  }
    return 0;
 }
