@@ -1,21 +1,13 @@
 #include <stdio.h>
 #include <stdbool.h>
-#define ARRNUM 100
 
 int middlepoint (int start, int end);
 
 int main(void) 
 {
-    int arr[ARRNUM];
-    
-    for (int i = 0; i < ARRNUM; i++)
-    {
-        arr[i] = i + 1;
-    }
-    
     int findcompo = 0;
     int start = 1;
-    int end = ARRNUM;
+    int end = 100;
     
     int middlepointcompo = 50;
     
