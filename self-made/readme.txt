@@ -4,3 +4,4 @@ self-made problems
 - quiz for endterm for learningpython
 - quiz for endterm for learningpython : plus 
 - quiz for midterm for learningC
+- quiz for endterm for learningC
