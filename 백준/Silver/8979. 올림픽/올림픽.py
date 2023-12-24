@@ -50,6 +50,7 @@ for i in range (1, N) :
                 
             else : 
                 rank[i][0] = rank[i-1][0]
+                counting += 1
                 pass
             
     else :
@@ -60,7 +61,7 @@ for i in range (1, N) :
         break
     
 rank.sort(key = lambda x : (x[1]))
-    
+
 for i in range (N) :
     if rank[i][1] == K : 
         break
