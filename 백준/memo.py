@@ -18,3 +18,27 @@ for i in range (M+1) :
                 
 print (lst)
 ...
+
+########
+
+# nested loopstations is baddest in this situation!
+
+import sys
+
+N = int(sys.stdin.readline())
+A = list(map(int, sys.stdin.readline().split()))
+
+for i in range (N-1) : 
+    key = 0
+    for j in range (i+1, N) : 
+        if A[i] < A[j] : 
+            key = 1
+            break
+    
+    if key == 0 :
+        print (-1)
+        
+    else :    
+        print (A[j])
+    
+print (-1)
