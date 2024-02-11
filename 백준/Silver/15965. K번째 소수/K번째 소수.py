@@ -13,7 +13,7 @@ def eratosthenes (M, N) :
     return nums[M : ]
   
 K = int(sys.stdin.readline())  
-prime = eratosthenes(1, 500000)[:-1]
-prime = [idx+1 for idx in range (1, 500000) if prime[idx] == 0]
+prime = eratosthenes(1, 10**7)[:-1]
+prime = [idx+1 for idx in range (1, 10**7) if prime[idx] == 0]
 
 print (prime[K-1])
