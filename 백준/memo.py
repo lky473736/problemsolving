@@ -1,72 +1,58 @@
+# 구현해야 할 것 
+# 1) in 키워드 말고 완전탐색
+# 2) 모든 대각선
+
 import sys
-import math
 
-N = int(sys.stdin.readline())
+n = int(sys.stdin.readline())
 
-if N < 7 :
-    print (-1)
-    exit()
-
-'''while True :
-    if suma > N :
-        a1 = 1
-        r += 1
-        
-    arr = [a1, a1*r, a1*r*r]
-    length_arr = 3
-    suma = a1 * (1 + r + r**2)
+for i in range (n) :
+    r, c = map(int, sys.stdin.readline().split())
     
-    while True :
-        if suma == N :
-            break
-        
-        elif suma > N :
-            a1 += 1
-            break
-            
-        arr.append (a1 * r**(length_arr))
-        suma += a1 * r**(length_arr)
-        length_arr += 1
-        
-    if suma == N : 
-        break'''
-
-def sumation(a1, r, n) :
-    return a1 * (r**n - 1) // (r - 1)
-        
-a1 = 1
-
-while True : 
-    if a1 == N : 
-        print (-1)
-        exit()
+    counting = 0
     
-    for r in range (2, int(math.sqrt(N)) + 1) :
-        for counting in range (3, int(math.log(N, r)) + 2) : 
-            if sumation(a1, r, counting) == N : 
-                print (counting)
-                    
-                for i in range (counting) : 
-                    print (a1*r**i, end = ' ')
-                        
-                exit()
-                    
-            elif sumation(a1, r, counting) > N :
-                break
-            
-    a1 += 1
-
-            
-    '''while True :
-        if sumation(a1, r, 3) > N : 
-            break
+    tupls = []
+    
+    for j in range (r) : 
+        tupl = sys.stdin.readline().rstrip()
         
-        elif sumation(a1, r, counting) == N :
-            break
+        if 'word' in tupl : 
+            counting += 1
+            
+        if 'drow' in tupl :
+            counting += 1
+            
+        tupls.append(tupl)
         
-        a1 += 1
-        arr.append (a1*r**counting)
+    # print (tupls)
+    
+    for j in range (c) : 
+        joinCol = ''.join([tupls[k][j] for k in range (r)])
+        # print (joinCol)
+        
+        if 'word' in joinCol : 
+            counting += 1
+            
+        if 'drow' in joinCol :
+            counting += 1
+            
+    diagonalPositive = ''.join([tupls[r-1-j][j] for j in range (r)])
+    diagonalNegative = ''.join([tupls[j][j] for j in range (r)])
+    # print (diagonalPositive, diagonalNegative)
+    
+    if 'word' in diagonalPositive :
         counting += 1
+        
+    if 'drow' in diagonalPositive :
+        counting += 1
+        
+    if 'word' in diagonalNegative :
+        counting += 1
+        
+    if 'drow' in diagonalNegative :
+        counting += 1
+        
+    print (counting)
         
     if sumation(a1, r, counting) == N : 
         break'''
