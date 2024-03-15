@@ -1,58 +1,132 @@
-# 구현해야 할 것 
-# 1) in 키워드 말고 완전탐색
-# 2) 모든 대각선
+# 이따가 해야할 거
+# itertools.combinations를 이용해서 코드 리펙토링하기
 
 import sys
+import math
+import itertools
 
-n = int(sys.stdin.readline())
+N, M = map(int, sys.stdin.readline().split())
+primes = list(map(int, sys.stdin.readline().split()))
 
-for i in range (n) :
-    r, c = map(int, sys.stdin.readline().split())
+'''nums_set = set()
+
+global counting
+counting = 0'''
+
+'''def eratosthenes (C, K) :
+    global counting
+    i = C
     
-    counting = 0
+    if nums[i] == 0 :
+        for j in range (i + i, K + 1, i) :
+            if nums[j] == 1 :
+                pass
+            
+            else :
+                nums[j] = 1
+                counting += 1'''
+
+'''for prime in primes : 
+    i = 1
     
-    tupls = []
-    
-    for j in range (r) : 
-        tupl = sys.stdin.readline().rstrip()
+    while True :
+        if prime * i > M : 
+            break
         
-        if 'word' in tupl : 
+        if (prime * i) in nums_set : 
+            pass
+        
+        else :
+            nums_set.add (prime * i)
             counting += 1
             
-        if 'drow' in tupl :
-            counting += 1
-            
-        tupls.append(tupl)
-        
-    # print (tupls)
+        i += 1
     
-    for j in range (c) : 
-        joinCol = ''.join([tupls[k][j] for k in range (r)])
-        # print (joinCol)
-        
-        if 'word' in joinCol : 
-            counting += 1
-            
-        if 'drow' in joinCol :
-            counting += 1
-            
-    diagonalPositive = ''.join([tupls[r-1-j][j] for j in range (r)])
-    diagonalNegative = ''.join([tupls[j][j] for j in range (r)])
-    # print (diagonalPositive, diagonalNegative)
+print (counting)'''
+
+'''counting = 0
+current = 0
+i = 1
+
+for prime in primes :
+    while True :
+        if current > M : 
+            break
     
-    if 'word' in diagonalPositive :
-        counting += 1
+    current = prime '''
+    
+counting = 0
+K = 0
+operand = []
+
+if N >= 2 :
+    '''while True :
+        if N - 1 == i : 
+            break
         
-    if 'drow' in diagonalPositive :
-        counting += 1
+        counting += M // primes[i]
+        counting += M // primes[i+1]
+        counting -= M // (primes[i] * primes[i+1])
         
-    if 'word' in diagonalNegative :
-        counting += 1
+        i += 1'''
         
-    if 'drow' in diagonalNegative :
-        counting += 1
+    while True :
+        component_set = []
+        divider = 1
         
-    print (counting)
+        if K > N : 
+            break
         
-    if sumation(a1, r, counting) == N : 
-        break'''
+        K += 1
+        print (K)
+        
+        if K == 1 or K == N :
+            if K == 1 : # 1 
+                for c in range (N) : 
+                    component_set.append(M // primes[c])
+                
+            else : # N
+                divider = 1
+                for c in range (N) :
+                    divider = divider * primes[c]
+                    
+                component_set.append(M // divider)
+        
+        else :
+            i = 0
+            
+            for c in range (N - K + 1) :
+                for d in range (K) :
+                    divider *= primes[c+d]
+
+                component_set.append (M // divider)
+                divider = 1
+                        
+            for p in range (K-1) :
+                divider *= primes[N-1-p]
+                
+            divider *= primes[0]
+            
+            component_set.append(M // divider)
+            
+        operand.append (component_set)
+        print (operand)
+        
+    operator = '+'
+    
+    # operand.pop()
+    print (operand)
+    
+    for i in operand :
+        if operator == '+' :
+            operator = '-'
+            counting += sum(i)
+            
+        else :
+            operator = '+'
+            counting -= sum(i)
+        
+else :
+    counting += M // primes[0]
+
+print (counting)
