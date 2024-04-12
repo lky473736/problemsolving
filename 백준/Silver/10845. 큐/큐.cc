@@ -3,21 +3,22 @@
 #include <queue>
 
 int main() {
-    std::queue<int> queue;
-    int N;
-    int counting = 0;
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
     
-    scanf ("%d", &N);
+    std::queue<int> queue;
+    long long int N;
+    long long int counting = 0;
+    
+    std::cin >> N;
     
     for (int i = 0; i < N; i++) {
         std::string command;
         std::cin >> command;
-        int _ = getchar();
-        
+
         if (command.compare("push") == 0) {
-            int X;
-            scanf ("%d", &X);
-            int _ = getchar();
+            long long int X;
+            std::cin >> X;
             
             queue.push(X);
             counting += 1;
