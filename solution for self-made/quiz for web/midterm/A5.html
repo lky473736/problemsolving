@@ -1,0 +1,57 @@
+<!--
+    아래와 같은 form을 만드시오.
+    (다만, form의 target은 "submit.jsp"이며, method는 get 방식이다.
+    각 입력창을 의미하는 이름들은 전부 label로 지정해주어야 한다.
+    성별은 하나를 택하였으면 다른 하나는 해제되어야 한다. 
+    각 이름들에 맞게끔 input의 type을 조정하라.)
+-->
+
+<html>
+<head>
+</head>
+<body>
+    <h3 style="text-align:center">회원가입 서비스</h3>
+    <form target="submit.jsp" method="GET" name="register_service">
+        <p>
+            <label for="name"><mark><b>이름</b></mark></label>
+            <input type="text" name="name" id="name">
+        </p>
+
+        <p>
+            <label for="gender"><mark><b>성별</b></mark></label>
+            <br>
+            남자<input type="radio" name="gender" id="gender" value="man">
+            여자<input type="radio" name="gender" id="gender" value="woman">
+        </p>
+
+        <p>
+            <label for="tel"><mark><b>전화번호</b></mark></label>
+            <input type="tel" name="tel" id="tel">
+        </p>
+
+        <p>
+            <label for="username"><mark><b>아이디</b></mark></label>
+            <input type="text" name="username" id="username">
+        </p>
+
+        <p>
+            <label for="password"><mark><b>비밀번호</b></mark></label>
+            <input type="password" name="password" id="password">
+        </p>
+
+        <p>
+            <label for="email"><mark><b>이메일</b></mark></label>
+            <input type="email" name="email" id="email">
+        </p>
+
+        <p>
+            <label for="birthday"><mark><b>생일</b></mark></label>
+            <input type="date" name="birthday" id="birthday">
+        </p>
+
+        <button type="submit"><b>제출하기</b></button>
+        <br>
+        <button type="reset"><b>초기화</b></button>
+    </form>
+</body>
+</html>
