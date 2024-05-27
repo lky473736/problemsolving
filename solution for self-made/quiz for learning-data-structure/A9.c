@@ -51,7 +51,8 @@ int binary_search (int data) {
 int main() {
     int position_linear = linear_search(2);
     int position_binary = binary_search(2);
-    
+
+    printf ("%d %d\n", position_linear, position_binary);
     printf ("%d %d", linear_count, binary_count);
     
     return 0;
