@@ -1,19 +1,15 @@
-#include <cstdio>
 #include <iostream>
-#include <map>
-#include <string>
-#include <algorithm>
+using namespace std;
 
-int main() {
-    // \    /\
-    //  )  ( ')
-    // (  /  )
-    //  \(__)|
+int main()
+{
+    std::ios::sync_with_stdio(0);
+    std::cin.tie(0);
     
-    printf ("\\    /\\\n");
-    printf (" )  ( \')\n");
-    printf ("(  /  )\n");
-    printf (" \\(__)|");
+    cout << "\\    /\\" << "\n";
+    cout << " )  ( ')" << "\n";
+    cout << "(  /  )" << "\n";
+    cout << " \\(__)|" << "\n";
     
     return 0;
 }
