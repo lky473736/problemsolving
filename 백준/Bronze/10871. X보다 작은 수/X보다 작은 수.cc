@@ -1,22 +1,18 @@
-#include <cstdio>
 #include <iostream>
-#include <map>
-#include <string>
-#include <algorithm>
 
 int main() {
+    std::ios::sync_with_stdio(0);
+    std::cin.tie(0);
+    
     int N, X;
-    scanf ("%d %d", &N, &X);
-    
-    int *arr = new int[N];
-    
-    for (int i = 0; i < N; i++) {
-        scanf ("%d", arr+i);
-    }
+    int compo;
+    std::cin >> N >> X;
     
     for (int i = 0; i < N; i++) {
-        if (arr[i] < X) {
-            std::cout << arr[i] << ' ';
+        std::cin >> compo;
+        
+        if (compo < X) {
+            std::cout << compo << " ";
         }
     }
     
