@@ -8,7 +8,7 @@ int nums[10];
 
 void func(int cnt, int start) {
     if (cnt == m) {
-        for (int i = 0; i < m; ++i) {
+        for (int i = 0; i < m; i++) {
             cout << arr[i] << ' ';
         }
         
@@ -17,7 +17,7 @@ void func(int cnt, int start) {
     }
 
     int prev = 0;
-    for (int i = start; i < n; ++i) {
+    for (int i = start; i < n; i++) {
         if (prev != nums[i]) {
             arr[cnt] = nums[i];
             prev = arr[cnt];
@@ -30,7 +30,7 @@ void func(int cnt, int start) {
 int main() {
     cin >> n >> m;
     
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         cin >> nums[i];
     }
     
