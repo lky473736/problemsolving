@@ -1,115 +1,134 @@
-#include <cstdio>
-#include <iostream>
-#include <map>
-#include <cstring>
-#include <algorithm>
-#include <cmath>
-#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
 
-// 1) 둘 중에 최댓값 catch
-// 2) 최댓값만큼 map 생성
-// 3) map 생성해서 위치 구해지면
-// 4) 그 위치까지의 counting 출력
+/*
+import sys 
 
-std::map<int, std::vector<int>> creator (int endcount);
-int finder(int px, int py);
+n = int(sys.stdin.readline())
 
+rst = 0
+Alist = list()
+Blist = list()
+Clist = list()
+Dlist = list() 
 
-int main() {
-    int T;
-    scanf ("%d", &T);
+for i in range (n) :
+    a, b, c, d = map(int, sys.stdin.readline().split())
     
-    for (int i = 0; i < T; i++) {
-        int x, y;
-        scanf ("%d %d", &x, &y);
+    Alist.append (a)
+    Blist.append (b)
+    Clist.append (c)
+    Dlist.append (d)
+
+aplusb = dict()
+# keys = set()
+
+for compo_a in Alist : 
+    for compo_b in Blist :
+        plus1 = compo_a + compo_b
         
-        int max = x > y ? x : y;
+        if plus1 not in aplusb : 
+            aplusb[plus1] = 1 
+            # keys.add(plus1)
+            
+        else :
+            aplusb[plus1] += 1
+
+for compo_c in Clist :
+    for compo_d in Dlist :
+        plus2 = -(compo_c + compo_d)
         
-        std::map<int, std::vector<int>> dots = creator(max);
-        
-        std::vector<int> position = {1, 1};
-        // int keys[10000];
-        
-        std::vector<int> position_x = dots[x-1];
-        std::vector<int> position_y = dots[y-1];
-        
-        int x_val, y_val;
-        x_val = position_x[0] + position_y[0];
-        y_val = position_x[1] + position_y[1];
-        
-        int rst = finder (x_val, y_val);
-        printf ("%d\n", rst+1);
+        if plus2 in aplusb :
+            rst += aplusb[plus2]
+            # rst += 1
+
+print (rst)
+*/
+
+int main() {    
+    int n;  
+    cin >> n;
+    
+    vector<long long> A(n);
+    vector<long long> B(n);
+    vector<long long> C(n);
+    vector<long long> D(n);
+    
+    for (int i = 0; i < n; i++) {
+        cin >> A[i] >> B[i] >> C[i] >> D[i];
     }
+    
+    unordered_map<long long, int> aplusb;
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            long long plus1 = A[i] + B[j];
+            
+            if (aplusb.find(plus1) != aplusb.end()) {
+                aplusb[plus1] += 1;
+            }
+            
+            else {
+                aplusb.insert({plus1, 1});
+            }
+        }
+    }
+    
+    int rst = 0;
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            long long plus2 = -1 * C[i] -1 * D[j];
+            
+            if (aplusb.find(plus2) != aplusb.end()) {
+                rst += aplusb[plus2];
+            }
+        }
+    }
+    
+    cout << rst;
     
     return 0;
 }
 
-std::map<int, std::vector<int>> creator (int endcount) {
-    std::map<int, std::vector<int>> dots;
-    int counting = 0;
-    std::vector<int> position = {1, 1};
-    
-    while (true) {
-        if (counting > endcount) {
-            break;
-        }
-        
-        else {
-            // keys[counting] = counting;
-            dots[counting] = std::vector<int>(position);
-            
-            if (position[1] == 1) {
-                position[1] = position[0]+1;
-                position[0] = 1;
-                // position = {1, position[0]+1};
-            }
-            
-            else {
-                int temp1 = position[0];
-                int temp2 = position[1];
-                
-                position[0] = temp1+1;
-                position[1] = temp2-1;
-            }
-        }
-        
-        counting += 1;
-    }
-    
-    return (dots);
-}
 
-int finder(int px, int py) {
-    std::map<int, std::vector<int>> dots;
-    int counting = 0;
-    std::vector<int> position = {1, 1};
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int main() {
+//     int n;
+//     cin >> n;
     
-    while (true) {
-        if (position[0] == px && position[1] == py) {
-            break;
-        }
-        
-        else {
-            // keys[counting] = counting;
-            dots[counting] = std::vector<int>(position);
-            
-            if (position[1] == 1) {
-                position[1] = position[0]+1;
-                position[0] = 1;
-                // position = {1, position[0]+1};
-            }
-            
-            else {
-                int temp1 = position[0];
-                int temp2 = position[1];
-                
-                position[0] = temp1+1;
-                position[1] = temp2-1;
-            }
-        }
-        
-        counting += 1;
-    }
+//     vector<long long> A(n);
+//     vector<long long> B(n);
+//     vector<long long> C(n);
+//     vector<long long> D(n);
     
-    return (counting);
-}
+//     for (int i = 0; i < n; i++) {
+//         cin >> A[i] >> B[i] >> C[i] >> D[i];
+//     }
+    
+//     unordered_map<long long, int> aplusb;
+    
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             long long plus1 = A[i] + B[j];
+//             aplusb[plus1]++;
+//         }
+//     }
+    
+//     int rst = 0;
+    
+//     for (int i = 0; i < n; i++) {
+//         for (int j = 0; j < n; j++) {
+//             long long plus2 = -C[i] - D[j];
+//             if (aplusb.find(plus2) != aplusb.end()) {
+//                 rst += aplusb[plus2];
+//             }
+//         }
+//     }
+    
+//     cout << rst << endl;
+    
+//     return 0;
+// }
