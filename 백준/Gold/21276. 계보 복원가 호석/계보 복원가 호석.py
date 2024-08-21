@@ -46,8 +46,8 @@ for name in names : # 조상 찾기
 names = sorted(names)
 
 print (cnt_ancestor)
-for i in range (cnt_ancestor) : 
-    print (ancestor[i], end = ' ')
+for compo in sorted(ancestor) : 
+    print (compo, end = ' ')
     
 print ()
 
@@ -60,10 +60,11 @@ for name in names :
     if rst[name] : 
         print (len(rst[name]), end = ' ')
         
-        for i in range (len(rst[name])) : 
-            print (sorted(rst[name])[i], end=' ')
+        for compo in sorted(rst[name]) : 
+            print (compo, end=' ')
         
     else : 
         print (0, end=' ')
     
     print ()
+    
