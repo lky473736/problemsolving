@@ -1,134 +1,64 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/*
-import sys 
-
-n = int(sys.stdin.readline())
-
-rst = 0
-Alist = list()
-Blist = list()
-Clist = list()
-Dlist = list() 
-
-for i in range (n) :
-    a, b, c, d = map(int, sys.stdin.readline().split())
-    
-    Alist.append (a)
-    Blist.append (b)
-    Clist.append (c)
-    Dlist.append (d)
-
-aplusb = dict()
-# keys = set()
-
-for compo_a in Alist : 
-    for compo_b in Blist :
-        plus1 = compo_a + compo_b
-        
-        if plus1 not in aplusb : 
-            aplusb[plus1] = 1 
-            # keys.add(plus1)
-            
-        else :
-            aplusb[plus1] += 1
-
-for compo_c in Clist :
-    for compo_d in Dlist :
-        plus2 = -(compo_c + compo_d)
-        
-        if plus2 in aplusb :
-            rst += aplusb[plus2]
-            # rst += 1
-
-print (rst)
-*/
-
-int main() {    
-    int n;  
-    cin >> n;
-    
-    vector<long long> A(n);
-    vector<long long> B(n);
-    vector<long long> C(n);
-    vector<long long> D(n);
-    
-    for (int i = 0; i < n; i++) {
-        cin >> A[i] >> B[i] >> C[i] >> D[i];
-    }
-    
-    unordered_map<long long, int> aplusb;
-    
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            long long plus1 = A[i] + B[j];
-            
-            if (aplusb.find(plus1) != aplusb.end()) {
-                aplusb[plus1] += 1;
-            }
-            
-            else {
-                aplusb.insert({plus1, 1});
-            }
-        }
-    }
-    
-    int rst = 0;
-    
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            long long plus2 = -1 * C[i] -1 * D[j];
-            
-            if (aplusb.find(plus2) != aplusb.end()) {
-                rst += aplusb[plus2];
-            }
-        }
-    }
-    
-    cout << rst;
-    
-    return 0;
+int divide(int A, int B) {
+    if (B == 0) return abs(A);
+    return divide(B, A % B);
 }
 
+pair<string, string> get(pair<string, string> a, pair<string, string> b, pair<string, string> c) {
+    string s1 = to_string(stoi(a.second) * stoi(b.first) * stoi(c.second) + stoi(a.first) * (stoi(b.second) * stoi(c.first)));
+    string s2 = to_string(stoi(a.second) * (stoi(b.second) * stoi(c.first)));
+    return {s1, s2};
+}
 
-// #include <bits/stdc++.h>
-// using namespace std;
+int main() {
+    int n;
+    cin >> n;
 
-// int main() {
-//     int n;
-//     cin >> n;
-    
-//     vector<long long> A(n);
-//     vector<long long> B(n);
-//     vector<long long> C(n);
-//     vector<long long> D(n);
-    
-//     for (int i = 0; i < n; i++) {
-//         cin >> A[i] >> B[i] >> C[i] >> D[i];
-//     }
-    
-//     unordered_map<long long, int> aplusb;
-    
-//     for (int i = 0; i < n; i++) {
-//         for (int j = 0; j < n; j++) {
-//             long long plus1 = A[i] + B[j];
-//             aplusb[plus1]++;
-//         }
-//     }
-    
-//     int rst = 0;
-    
-//     for (int i = 0; i < n; i++) {
-//         for (int j = 0; j < n; j++) {
-//             long long plus2 = -C[i] - D[j];
-//             if (aplusb.find(plus2) != aplusb.end()) {
-//                 rst += aplusb[plus2];
-//             }
-//         }
-//     }
-    
-//     cout << rst << endl;
-    
-//     return 0;
-// }
+    stack<pair<string, string>> st;
+    int cnt_left = 0, cnt_right = 0;
+
+    for (int i = 0; i < n; i++) {
+        string compo;
+        cin >> compo;
+
+        if (compo == "(") {
+            cnt_left++;
+            st.push({compo, "0"});
+        } 
+        else if (compo == ")") {
+            cnt_right++;
+
+            if (st.size() < 4) { 
+                cout << "-1";
+                return 0;
+            }
+
+            pair<string, string> c = st.top(); st.pop();
+            pair<string, string> b = st.top(); st.pop();
+            pair<string, string> a = st.top(); st.pop();
+
+            if (st.empty() || st.top().first != "(") { 
+                cout << "-1";
+                return 0;
+            }
+            st.pop();
+
+            pair<string, string> formula = get(a, b, c);
+            st.push(formula);
+        } 
+        else { 
+            st.push({compo, "1"});
+        }
+    }
+
+    if (cnt_left != cnt_right || st.size() != 1 || st.top().second == "0") { 
+        cout << "-1";
+        return 0;
+    }
+
+    pair<string, string> fraction = st.top();
+    int GCD = divide(stoi(fraction.first), stoi(fraction.second));
+    cout << stoi(fraction.first) / GCD << ' ' << stoi(fraction.second) / GCD;
+}
