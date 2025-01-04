@@ -1,19 +1,16 @@
-#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
 
-int main() {
-    std::ios::sync_with_stdio(0);
-    std::cin.tie(0);
+int main(void) {
+    ios::sync_with_stdio(false); cin.tie(0);
     
     int N, X;
+    cin >> N >> X;
     int compo;
-    std::cin >> N >> X;
     
     for (int i = 0; i < N; i++) {
-        std::cin >> compo;
-        
-        if (compo < X) {
-            std::cout << compo << " ";
-        }
+        cin >> compo;
+        if (compo < X) cout << compo << ' ';
     }
     
     return 0;
