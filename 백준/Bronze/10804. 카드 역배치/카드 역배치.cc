@@ -1,51 +1,22 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
+// typedef long long ll;
 
-int main()
-{
-    std::ios::sync_with_stdio(0);
-    std::cin.tie(0);
+int main(void) {
+    ios::sync_with_stdio(false); cin.tie(0);
     
     int arr[20];
-    for (int i = 0; i < 20; i++) {
-        arr[i] = i+1;
-    }
+    for (int i = 0; i < 20; i++) arr[i] = i+1;
     
-    int a, b, term;
     for (int i = 0; i < 10; i++) {
-        cin >> a >> b;
-        
-        if (a == b) {
-            ;
-        }
-        
-        else {
-            term = b - a + 1;
-            
-            for (int j = 0; j < term/2; j++) {
-                int temp = arr[a+j-1];
-                arr[a+j-1] = arr[b-j-1];
-                arr[b-j-1] = temp;
-            }
-            
-            // int *section = new int[term];
-            // int cnt = 0;
-            // for (int j = a-1; j <= b-1; j++) {
-            //     section[cnt++] = arr[j];
-            // }
-            
-            // sort(section, section+term, greater<int>());
+        int x, y; cin >> x >> y;
+        vector<int> temp(20);
 
-            // for (int j = 0; j < term; j++) {
-            //     arr[a-1+j] = section[j];
-            // }
-        }
+        for (int j = 0; j < y-x+1; j++)     temp[x-1+j] = arr[y-1-j];
+        // for (int j = 0; j < y-x+1; j++)   cout << temp[j] << '\n';
+        for (int j = x-1; j < y; j++)     arr[j] = temp[j];
     }
-    
-    for (int i = 0; i < 20; i++) {
-        cout << arr[i] << ' ';
-    }
-    
+
+    for (int i = 0; i < 20; i++) cout << arr[i] << ' ';
     return 0;
 }
