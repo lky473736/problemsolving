@@ -1,34 +1,30 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
-    std::ios::sync_with_stdio(0);
-    std::cin.tie(0);
-    
-    int dice[3] = {}, rst;
-    cin >> dice[0] >> dice[1] >> dice[2];
-    
-    if (dice[0] == dice[1] && dice[0] == dice[2]) {
-        rst = 10000 + dice[0] * 1000;
+int main(void) {
+    ios::sync_with_stdio(false); cin.tie(0);
+
+    int a1, a2, a3;
+    cin >> a1 >> a2 >> a3;
+
+    if (a1 == a2 && a2 == a3) {
+        cout << 10000 + a1 * 1000;
     }
-    
     else {
-        if (dice[0] == dice[1] || dice[0] == dice[2]) {
-            rst = 1000 + dice[0] * 100;
+        if (a1 == a2 && a2 != a3) {
+            cout << 1000 + a1 * 100;
         }
-        
-        else if (dice[1] == dice[2]) {
-            rst = 1000 + dice[1] * 100;
+        else if (a1 == a3 && a3 != a2) {
+            cout << 1000 + a1 * 100;
         }
-        
+        else if (a2 == a3 && a1 != a3) {
+            cout << 1000 + a2 * 100;
+        }
         else {
-            rst = max({*dice, *(dice+1), *(dice+2)}) * 100;
+            int max = (a1 > a2) ? ((a1 > a3) ? a1 : a3) : ((a2 > a3) ? a2 : a3); 
+            cout << 100 * max;
         }
     }
-    
-    cout << rst;
-    
+
     return 0;
 }
