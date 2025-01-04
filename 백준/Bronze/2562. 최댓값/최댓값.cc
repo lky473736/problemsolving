@@ -1,30 +1,17 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
+// typedef long long ll;
 
-int main()
-{
-    std::ios::sync_with_stdio(0);
-    std::cin.tie(0);
+int main(void) {
+    ios::sync_with_stdio(false); cin.tie(0);
     
-    int max, compo, idx;
+    int max = 0, posi = 0;
+    int compo;
     for (int i = 0; i < 9; i++) {
         cin >> compo;
-        
-        if (i == 0) {
-            max = compo;
-            idx = i;
-        }
-        
-        else {
-            if (max < compo) {
-                max = compo;
-                idx = i;
-            }
-        }
+        if (i == 0) { max = compo; posi = i; }
+        if (compo > max) { max = compo; posi = i; }
     }
-    
-    cout << max << '\n' << idx+1;
-    
+    cout << max << '\n' << posi+1;
     return 0;
 }
