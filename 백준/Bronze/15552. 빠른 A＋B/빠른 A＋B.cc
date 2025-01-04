@@ -1,20 +1,15 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
+// typedef long long ll;
 
-int main()
-{
-    std::ios::sync_with_stdio(0);
-    std::cin.tie(0);
+int main(void) {
+    ios::sync_with_stdio(false); cin.tie(0);
     
-    long long T = 0;
-    cin >> T;
-    
+    int T; cin >> T;
     for (int i = 0; i < T; i++) {
-        int A, B;
-        cin >> A >> B;
-        cout << A + B << '\n';
+        int a, b;
+        cin >> a >> b;
+        cout << a + b << '\n';
     }
-    
     return 0;
 }
