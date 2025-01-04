@@ -1,19 +1,17 @@
-#include <cstdio>
-#include <iostream>
-#include <map>
-#include <string>
-#include <algorithm>
+#include <bits/stdc++.h>
+using namespace std;
 
-int main() {
+int main(void) {
+    ios::sync_with_stdio(false); cin.tie(0);
+
     int year;
+    cin >> year;
     
-    scanf ("%d", &year);
-    
-    if ((year % 4 == 0) && ((year % 100) != 0 || (year % 400) == 0)) {
-        printf ("1\n");
+    if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+        cout << 1;
     }
-    
     else {
-        printf ("0\n");
+        cout << 0;
     }
+    return 0;
 }
