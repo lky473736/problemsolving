@@ -1,0 +1,4 @@
+- date : 2025.01.04. ~ 1월 안까지
+- lecture : https://www.youtube.com/playlist?list=PLtqbFd2VIQv4O6D6l9HcD732hdrnYb6CY
+  - 이틀에 한 강의 ~ 세 강의씩
+  - practice : https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook.md
